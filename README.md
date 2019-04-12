@@ -23,9 +23,9 @@ database must be configurable in an external text file (.properties or .xml ).
 # Precondition
 * The Server MySQL must be running.
 * The DB must be created (for example comviva)
+* Download tomcat 8
 
-
-# Deploy:
+# War:
  - application.properties file are setup the db configuration.
  - download dependences, compile and generate target folder:
 ```sh
@@ -35,7 +35,20 @@ database must be configurable in an external text file (.properties or .xml ).
 ```sh
     mvn test
 ```
- - run: 
+ - genrate comviva3-0.0.1-SNAPSHOT.war in folder /target/ : 
  ```sh
-    mvn -q exec:java -e -Dexec.mainClass=com.comviva.App -Dexec.args="/home/hernan/workspace/eclipse-workspace/comviva/files/test1.txt"
+    mvn package
 ```
+
+# Deployment in tomcat
+ - Copy our WAR file from target/comviva3-0.0.1-SNAPSHOT.war to the tomcat8/webapps/ folder
+ - From a terminal navigate to tomcat8/bin folder and execute
+    - catalina.sh run (on Unix-based systems)
+ - Go to http://localhost:8080/comviva3-0.0.1-SNAPSHOT
+ - Endpoints: 
+    - GET  ->   /comviva/list
+    - POST ->   /process-file/process
+        - body:
+            {
+                "path": "/home/hernan/workspace/eclipse-workspace/comviva/files/test1.txt"
+            }
