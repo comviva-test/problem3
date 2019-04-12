@@ -23,13 +23,13 @@ database must be configurable in an external text file (.properties or .xml ).
 # Precondition
 * The Server MySQL must be running.
 * The DB must be created (for example comviva)
-* Download tomcat 8
+* Download Tomcat 8.5.34
 
 # War:
  - application.properties file are setup the db configuration.
  - download dependences, compile and generate target folder:
 ```sh
- - mvn compile
+ - mvn package
 ```
  - test:
 ```sh
@@ -37,7 +37,7 @@ database must be configurable in an external text file (.properties or .xml ).
 ```
  - genrate comviva3-0.0.1-SNAPSHOT.war in folder /target/ : 
  ```sh
-    mvn package
+    mvn clean install
 ```
 
 # Deployment in tomcat
@@ -52,3 +52,10 @@ database must be configurable in an external text file (.properties or .xml ).
             {
                 "path": "/home/hernan/workspace/eclipse-workspace/comviva/files/test1.txt"
             }
+
+
+# Web Page
+ - ubicacion:
+```sh
+ - http://localhost:8080/WAR-NAME/index.html
+```
